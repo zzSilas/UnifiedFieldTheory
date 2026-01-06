@@ -1,0 +1,260 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Scientific Minimalism Design Tokens */
+  --color-deep-blue: #0F172A;
+  --color-dark-blue: #1E293B;
+  --color-cyan: #00D9FF;
+  --color-purple: #9D4EDD;
+  --color-light-cyan: #06B6D4;
+  --color-white: #FFFFFF;
+  --color-light-gray: #E0E0E0;
+  --color-dark-gray: #64748B;
+  
+  --primary: var(--color-cyan);
+  --primary-foreground: var(--color-deep-blue);
+  --sidebar-primary: var(--color-light-cyan);
+  --sidebar-primary-foreground: var(--color-deep-blue);
+  --chart-1: var(--color-cyan);
+  --chart-2: var(--color-light-cyan);
+  --chart-3: var(--color-purple);
+  --chart-4: var(--color-deep-blue);
+  --chart-5: var(--color-dark-blue);
+  --radius: 0.65rem;
+  --background: #0F172A;
+  --foreground: #FFFFFF;
+  --card: #1E293B;
+  --card-foreground: #FFFFFF;
+  --popover: #1E293B;
+  --popover-foreground: #FFFFFF;
+  --secondary: #334155;
+  --secondary-foreground: #E0E0E0;
+  --muted: #475569;
+  --muted-foreground: #CBD5E1;
+  --accent: #00D9FF;
+  --accent-foreground: #0F172A;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #334155;
+  --input: #1E293B;
+  --ring: #00D9FF;
+  --sidebar: #1E293B;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-accent: #00D9FF;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #334155;
+  --sidebar-ring: #00D9FF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: linear-gradient(135deg, #0F172A 0%, #1a1f3a 100%);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+  
+  h1 {
+    @apply text-5xl md:text-6xl font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-4xl md:text-5xl font-bold;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+  
+  code, pre {
+    @apply font-mono;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /* Typography */
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'Fira Code', monospace;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent;
+  }
+  
+  /* Glow effects */
+  .glow-cyan {
+    @apply shadow-lg shadow-cyan-500/50;
+  }
+  
+  .glow-purple {
+    @apply shadow-lg shadow-purple-500/50;
+  }
+  
+  /* Cards with glow */
+  .card-glow {
+    @apply bg-slate-800/50 border border-slate-700 rounded-lg backdrop-blur-sm hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300;
+  }
+  
+  /* Section divider */
+  .section-divider {
+    @apply relative py-12 md:py-20;
+  }
+  
+  /* Animated gradient border */
+  .gradient-border {
+    @apply relative p-px rounded-lg;
+    background: linear-gradient(90deg, #00D9FF, #9D4EDD, #00D9FF);
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
+  
+  /* Fade in animation */
+  .fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Scroll reveal animation */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+    max-width: 1400px;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  
+  /* Scientific formula display */
+  .formula-card {
+    @apply bg-slate-800/40 border border-cyan-500/30 rounded-lg p-6 backdrop-blur-sm;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+  }
+  
+  .formula-card:hover {
+    @apply border-cyan-400/60 shadow-lg shadow-cyan-500/20;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+    }
+  }
+}
